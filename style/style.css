@@ -1,0 +1,660 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Links */
+a, a:link, a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/* Common */
+aside, nav, footer, header, section {
+	display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+ul, ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+img, svg {
+	max-width: 100%;
+	height: auto;
+}
+
+address {
+	font-style: normal;
+}
+
+:root {
+	--primary-color: #4CAF50;  /* Салатовый (зеленый) — символизирует здоровье и природу */
+	--secondary-color: #FF9800;  /* Теплый оранжевый — ассоциируется с энергией и активностью */
+	--disabled-color: #B0BEC5;  /* Пепельный серый для отключенной кнопки */
+	--text-color: #263238;  /* Темный серо-синий для текста — хороший контраст */
+	--text-color-white: #FFFFFF;  /* Белый для текста на темном фоне */
+	--border-radius: 8px;  /* Скругленные углы */
+	--border-color: #CFD8DC;  /* Очень светлый серый бордер */
+	--padding-button: 16px 32px;
+	--calendar-days-color: #F1F8E9;  /* Светло-зеленый для фона дней */
+	--button-color: #4CAF50;  /* Салатовый — основная кнопка */
+	--button-color-hover: #388E3C;  /* Более темный зеленый при наведении */
+	--background-color: #FFFFFF;  /* Белый фон */
+	--box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Легкая, но заметная тень */
+	--input-padding: 14px 20px;
+	--input-border-color: #B0BEC5;
+	--input-bg-color: #E8F5E9;  /* Очень светлый зеленый для фона инпута */
+	--input-focus-border-color: #4CAF50;  /* Салатовый при фокусе */
+	--input-focus-box-shadow: 0px 0px 8px rgba(76, 175, 80, 0.2);
+	--progress-bar-bg: #C8E6C9;  /* Светлый зеленый для прогресса */
+	--protein-bar-color: #FF9800;  /* Оранжевый для белков */
+	--fats-bar-color: #8BC34A;  /* Светло-зеленый для жиров */
+	--carbs-bar-color: #03A9F4;  /* Ярко-голубой для углеводов */
+	--footer-bg: #4CAF50;  /* Зеленый фон подвала */
+	--footer-text-color: #FFFFFF;  /* Белый текст подвала */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========================================================================================================= */
+
+/* ========================================================================================================= */
+.result-block {
+	background-color: var(--background-color);
+	padding: 20px;
+	border-radius: var(--border-radius-all);
+	box-shadow: var(--box-shadow);
+	display: flex;
+	flex-direction: column;  /* Дочерние элементы располагаются в один вертикальный ряд */
+}
+
+.first-section {
+	text-align: center;
+	margin: 0;
+	background: var(--primary-color);
+}
+
+#date-block {
+	font-size: 20px;
+	color: black;
+	display: inline-block;
+	transition: all 0.3s ease;
+}
+
+#date-block:hover {
+	transform: scale(1.05);
+}
+
+.calculator {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* main-section======================================================================================= */
+.main-section {
+	background-color: var(--background-color);
+}
+
+.main {
+	height: 74vmax;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Контейнер для продуктов */
+.products-container {
+	display: flex;
+	gap: 15px;
+	flex-direction: column;
+}
+
+.calories {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 20px;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+	box-shadow: var(--box-shadow);
+	background-color: var(--background-color);
+	width: 100%;
+}
+
+.calories__total,
+.calories__percentage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+}
+
+.calories__label {
+	font-weight: bold;
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.calories__value {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+
+		font-weight: 600;
+		text-align: right;
+		height: 30px;
+		width: 80px;
+	border-radius: var(--border-radius);
+	background-color: var(--primary-color);
+	color: var(--text-color-wiht-fone);
+	font-size: 1.2em;
+}
+
+
+
+
+
+.protein, .fats, .cabs {
+	width: 25%; /* Каждому элементу отведено по 30% ширины контейнера */
+	text-align: center; /* Выравнивание текста по центру */
+}
+
+.protein {
+	margin-left: 7%;
+}
+
+.cabs {
+	margin-right: 7%;
+}
+
+.proteinFatsCabs {
+	text-align: center;
+	margin: 0;
+	background: var(--primary-color);
+}
+
+.proteinFatsCabs .container {
+	margin: 20px auto;
+	color: white;
+	display: flex; /* Используем Flexbox для расположения элементов в ряд */
+	justify-content: space-between; /* Распределяем пространство между элементами */
+	align-items: center; /* Выравнивание по вертикали */
+}
+
+.proteinFatsCabs .container__text {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+/* progress bar */
+.progress-bar {
+	position: relative;
+	width: 100%;
+	height: 10px; /* Высота прогресс-бара */
+	background-color: #e0e0e0; /* Цвет фона прогресс-бара */
+	border-radius: var(--border-radius);
+}
+
+.progress-bar__line {
+	height: 100%;
+	width: 0;
+	border-radius: var(--border-radius);
+	transition: width 0.5s;
+}
+
+#progress-bar-proteins {
+	background-color: #4caf50; /* Зеленый для белков */
+}
+
+#progress-bar-fats {
+	background-color: #ff9800; /* Оранжевый для жиров */
+}
+
+#progress-bar-carbs {
+	background-color: #2196f3; /* Синий для углеводов */
+}
+
+.container__output {
+	text-align: center;
+	font-size: 16px;
+	color: white;
+}
+
+/* notebook======================================================================================= */
+.notebook__button {
+	padding: 10px 20px;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: var(--button-color);
+	color: white;
+	border: none;
+	border-radius: var(--border-radius);
+	transition: background-color 0.3s ease;
+}
+
+.notebook__button:hover {
+	background-color: var(--button-color-hover);
+}
+
+.notebook__section {
+	padding: 20px;
+	background-color: var(--background-color);
+	border-radius: var(--border-radius);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	position: relative;
+	font-size: 16px;
+}
+
+.notebook__section::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+}
+
+.notebook__section .content {
+	padding: 15px 0;
+	line-height: 1.6;
+}
+
+.notebook__section .timestamp {
+	font-size: 12px;
+	color: #888;
+	margin-top: 10px;
+	text-align: right;
+}
+
+/* Стиль для контейнера строки поиска */
+.search-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 5px;
+}
+
+input[type="text"],
+input[type="number"] {
+	margin-bottom: 30px;
+	width: 100%;
+	max-width: 600px; /* Ограничение ширины */
+	padding: 12px 15px; /* Внутренние отступы */
+	font-size: 16px;
+	color: #333; /* Цвет текста */
+	background-color: var(--input-bg-color); /* Светлый фон */
+	border: 1px solid #d1d5db; /* Серый цвет рамки */
+	border-radius: var(--border-radius);
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+}
+
+input[type="text"], input[type="number"]:focus {
+	border-color: #3b82f6; /* Синий цвет рамки при фокусе */
+	box-shadow: 0px 0px 8px rgba(59, 130, 246, 0.3); /* Голубая тень */
+}
+
+/* Округлые кнопки отправки */
+button.send-button {
+	padding: 10px 18px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #ffffff;
+	background-color: #3b82f6;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+
+
+/* product======================================================================================= */
+/* Стили для блока с продуктом */
+.product-block {
+	margin: 20px 0;
+	padding: 15px;
+	background-color: transparent;
+	color: var(--disabled-color);
+}
+
+/* Заголовок продукта */
+.product-block h3 {
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* Описание продуктов */
+.product-block p {
+	margin: 5px 0;
+	font-size: 14px;
+}
+
+/* foter======================================================================================= */
+.footer {
+	background-color: var(--primary-color);  /* Светлый голубой фон */
+	color: var(--text-color);
+	padding: 10px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);  /* Тень сверху */
+}
+
+.footer__buttons {
+	display: flex;
+	justify-content: space-around;
+}
+
+.footer__button img {
+	width: 30px;
+	height: 30px;
+}
+
+.footer__button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer__button span {
+	font-size: 12px;
+}
+
+.footer__button:hover {
+	background-color: var(--footer-button-hover);
+}
+
+footer p {
+	font-size: 14px;
+	color: var(--text-color);
+}
+
+footer a {
+	color: var(--text-color);
+	text-decoration: underline;
+}
+
+
+/* foter======================================================================================= */
+
+
+.button {
+	padding: var(--padding-button);
+	font-size: 16px;
+	color: var(--text-color);
+	background-color: var(--button-color);
+	border: none;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.button:hover {
+	background-color: var(--button-color-hover);
+}
+
+.button:focus {
+	outline: none;
+}
+
+/* ========================================================== */
+/* Стили для блока с вводом */
+.amount {
+	margin: 10px 0;
+	display: flex;
+	align-items: center;
+}
+
+/* Стили для input (ввод числа) */
+.amount__input {
+	padding: 8px;
+	font-size: 16px;
+	width: 50%;
+	border: 1px solid var(--input-bg-color);
+	border-radius: var(--border-radius);
+}
+.amount__input--small {
+	font-size: 14px;
+	width: 30%;
+}
+
+/* Стили для select (выбор единицы измерения) */
+.amount__select {
+	padding: 8px;
+	font-size: 16px;
+	border: 1px solid var(--input-bg-color);
+	border-radius: var(--border-radius);
+	margin-left: 10px;  /* Отступ между инпутом и select */
+}
+
+/* Модификатор для маленького select */
+.amount__select--small {
+	font-size: 14px;
+	width: 30%;
+}
+
+/* foter======================================================================================= */
+
+
+.wraper {
+	margin: 0;
+	max-width: 100%;
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	height: 100%;
+}
+
+/* Header */
+.header {
+	background-color: var(--background-color);
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.first-section {
+	display: flex;
+	justify-content: flex-end;
+}
+
+#date-block {
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--primary-color);
+}
+
+/* Календарь */
+.calendar {
+	margin-top: 20px;
+	background-color: var(--background-color);
+	padding: 20px;
+	box-shadow: var(--box-shadow);
+	border-radius: var(--border-radius);
+}
+
+.calendar__header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.calendar__month {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.calendar__month button {
+	background: none;
+	border: none;
+	font-size: 24px;
+	color: var(--primary-color);
+	cursor: pointer;
+	padding: 0 15px;
+}
+
+.calendar__month span {
+	font-size: 22px;
+	margin: 0 10px;
+	color: var(--primary-color);
+}
+
+.calendar__days {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 7px;
+	margin-top: 20px;
+}
+
+.calendar__day {
+	color: var(--disabled-color);
+	background-color: var(--calendar-days-color);
+	padding: 15px;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 16px;
+}
+
+.calendar__day button {
+	width: 100%;
+	height: 100%;
+	background: none;
+	border: none;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 50%;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.calendar__day.today button {
+	background-color: #00BFFF;
+	color: white;
+}
+
+.calendar__day button:hover {
+	background-color: var(--background-color-button-hover);
+	color: var(--primary-color);
+}
+
+.calendar__day.today button:hover {
+	background-color: #007ACC;
+	color: white;
+}
+
+/* Контролы календаря */
+.calendar__controls {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.calendar__controls .button {
+	background-color: var(--button-color);
+	color: var(--text-color);
+	border: none;
+	padding: var(--padding-button);
+	border-radius: var(--border-radius);
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.calendar__controls .button:hover {
+	background-color: var(--button-color-hover);
+}
+
+.notebook__header {
+	position: relative; /* Относительное позиционирование для контейнера */
+}
+.notebook__header {
+	position: relative; /* Относительное позиционирование для контейнера */
+}
+
+#searchResults {
+	position: fixed; /* Фиксированное позиционирование для перекрытия других блоков */
+	top: 35vh; /* Смещение от верхнего края, настройте в зависимости от положения строки поиска */
+	left: 50%;
+	transform: translateX(-50%); /* Центрирование относительно окна */
+	width: 90%; /* Ширина, чтобы он соответствовал строке поиска */
+	background-color: var(--background-color);
+	z-index: 1000; /* Высокий z-index для перекрытия других блоков */
+	box-shadow: var(--box-shadow);
+	max-height: 70vh;
+	overflow-y: auto; /* Скролл при переполнении */
+	padding: 10px;
+	display: none; /* Скрыт по умолчанию */
+	border-radius: var(--border-radius);
+}
+
+
+/* Стили для ссылок */
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Стили для кнопок */
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
+select {
+	padding: 10px;
+	font-size: 16px;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
+}
+
+
+/* foter======================================================================================= */
+/* foter======================================================================================= */
+/* foter======================================================================================= */
+/* foter======================================================================================= */
+
+
+
+
+
+
+
+
